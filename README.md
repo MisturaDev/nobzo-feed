@@ -18,20 +18,12 @@ A single-screen React Native app built with **Expo + TypeScript** that displays 
 - Expo  
 - TypeScript  
 
-## **Assumptions:**
-
-- **Each feed item contains:** `id`, `author`, and `download_url`  
-- **Default fetch limit:** 20 items per page  
-- **Infinite scroll triggers:** when the user is 50% from the bottom of the list  
-- **App is single-screen** as requested in the task  
-- **Styling:** focused on clean, functional UI rather than visual perfection  
-- **State management:** React hooks are sufficient (no external libraries used)  
 
 ## Installation
 
 1. Clone the repo
-```bash
-git clone https://github.com/MisturaDev/nobzo-feed.git
+   ```bash
+   git clone https://github.com/MisturaDev/nobzo-feed.git
 
 
 2. Navigate into the project directory:
@@ -50,3 +42,12 @@ git clone https://github.com/MisturaDev/nobzo-feed.git
    - Scan the QR code using Expo Go on your mobile device 
    - Run on an Android/iOS emulator
 
+
+## **Assumptions:**
+
+- **Each feed item contains:** `id`, `author`, and `download_url`  
+- **Default fetch limit:** 20 items per page  
+- **Infinite scroll triggers:** when the user is 50% from the bottom of the list  
+- **App is single-screen** as requested in the task  
+- **Styling:** focused on clean, functional UI rather than visual perfection  
+- **State management:** React hooks are sufficient (no external libraries used)  
