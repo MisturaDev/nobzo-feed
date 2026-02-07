@@ -32,4 +32,21 @@ A single-screen React Native app built with **Expo + TypeScript** that displays 
 1. Clone the repo
 ```bash
 git clone https://github.com/MisturaDev/nobzo-feed.git
-cd nobzo-feed
+
+
+2. Navigate into the project directory:
+   ```bash
+   cd nobzo-feed
+
+3. Install dependencies:
+   ```bash
+   npm install
+
+4. Run the app with Expo Go
+   ```bash
+   npm run start
+
+5. Run the app:
+   - Scan the QR code using Expo Go on your mobile device 
+   - Run on an Android/iOS emulator
+
