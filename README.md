@@ -51,7 +51,7 @@ A single-screen React Native app built with **Expo and TypeScript** that display
 
 ## **Assumptions:**
 
-- **Each feed item contains:** `id`, `author`, and `download_url`  
+- **Each feed item contains:** `id`, `author` and `download_url`  
 - **Default fetch limit:** 20 items per page  
 - **Infinite scroll triggers:** when the user is 50% from the bottom of the list  
 - **App is single-screen** as requested in the task  
