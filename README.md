@@ -2,6 +2,8 @@
 
 A single-screen React Native app built with **Expo and TypeScript** that displays an image feed.
 
+---
+
 ## **Features:**
 
 - **Fetches images** from the Picsum Photos API  
@@ -12,12 +14,15 @@ A single-screen React Native app built with **Expo and TypeScript** that display
 - **Empty State:** Displays message if no images are returned  
 - **Responsive UI:** Works on all screen sizes and orientations  
 
+---
+
 ## **Technologies Used:**
 
 - React Native  
 - Expo  
 - TypeScript  
 
+---
 
 ## Installation
 
@@ -42,6 +47,7 @@ A single-screen React Native app built with **Expo and TypeScript** that display
    - Scan the QR code using Expo Go on your mobile device 
    - Run on an Android/iOS emulator
 
+---
 
 ## **Assumptions:**
 
