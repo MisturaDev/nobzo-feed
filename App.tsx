@@ -12,6 +12,7 @@ export default function App() {
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Load first page or retry
   const loadFeed = useCallback(async () => {
     try {
       setLoading(true);
@@ -20,8 +21,8 @@ export default function App() {
       const items = await fetchFeedData(1);
       setData(items);
       setPage(2);
-    } catch (err) {
-      setError('Could not load feed');
+    } catch (err: any) {
+      setError('Failed to load feed. Please check your connection.');
     } finally {
       setLoading(false);
     }
@@ -31,6 +32,7 @@ export default function App() {
     loadFeed();
   }, [loadFeed]);
 
+  // Load more items for infinite scroll
   const loadMore = async () => {
     if (loadingMore || loading) return;
 
@@ -39,26 +41,30 @@ export default function App() {
       const items = await fetchFeedData(page);
       setData(prev => [...prev, ...items]);
       setPage(prev => prev + 1);
-    } catch (err) {
-      setError('Could not load more');
+      setError(null); 
+    } catch (err: any) {
+      setError('Failed to load more items. Pull down to retry.');
     } finally {
       setLoadingMore(false);
     }
   };
 
+  // Pull-to-refresh
   const onRefresh = async () => {
     setRefreshing(true);
     try {
       const items = await fetchFeedData(1);
       setData(items);
       setPage(2);
-    } catch (err) {
-      setError('Could not refresh');
+      setError(null); 
+    } catch (err: any) {
+      setError('Failed to refresh. Check your connection and try again.');
     } finally {
       setRefreshing(false);
     }
   };
 
+  // Initial loading state
   if (loading) {
     return (
       <SafeAreaView style={styles.center}>
@@ -67,15 +73,17 @@ export default function App() {
     );
   }
 
+  // Initial error state (no data loaded yet)
   if (error && !data.length) {
     return (
       <SafeAreaView style={styles.center}>
-        <Text style={{ marginBottom: 16 }}>{error}</Text>
+        <Text style={{ color: 'red', marginBottom: 16 }}>{error}</Text>
         <Button title="Retry" onPress={loadFeed} />
       </SafeAreaView>
     );
   }
 
+  // Empty state
   if (!data.length) {
     return (
       <SafeAreaView style={styles.center}>
@@ -87,6 +95,13 @@ export default function App() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Text style={styles.header}>Feed</Text>
+
+      {error && (
+        <View style={{ padding: 16, alignItems: 'center' }}>
+          <Text style={{ color: 'red', marginBottom: 8 }}>{error}</Text>
+          <Button title="Retry" onPress={() => loadFeed()} />
+        </View>
+      )}
 
       <FlatList
         data={data}
@@ -109,11 +124,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     padding: 16,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   center: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 });
