@@ -1,6 +1,6 @@
 # Nobzo Feed App
 
-A single-screen React Native app built with **Expo + TypeScript** that displays an image feed.
+A single-screen React Native app built with **Expo and TypeScript** that displays an image feed.
 
 ## **Features:**
 
